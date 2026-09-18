@@ -1,13 +1,13 @@
 # Every rendition of the algorithm, measured
 
-Generated 2026-09-18T04:03:05.453Z from 11 renditions.
+Generated 2026-09-18T05:06:22.503Z from 11 renditions.
 
 | Measure | Value |
 |---|---|
 | Renditions in the record | 11 |
 | Ran | 7 |
 | Mean accuracy | 0.6364 |
-| Total ms | 33670.8 |
+| Total ms | 37125.7 |
 | Converts the algorithm itself | no — refused at `algorithm/src/index.ts:6:1` |
 
 **Accuracy means, per row:** for a TypeScript tree, the fraction of the project's own tests
@@ -19,24 +19,24 @@ finding rather than a placeholder.
 
 | Rendition | Language | Kind | Status | Accuracy | ms | Detail |
 |---|---|---|---|---|---|---|
-| `ts-five-commits-ago` | TypeScript | algorithm | ran | 1 | 18060.1 | 117/117 tests, 12 scenarios, 0 violations |
-| `ts-main` | TypeScript | algorithm | ran | 1 | 7721.6 | 117/117 tests, 12 scenarios, 0 violations |
-| `go` | Go | transpiler-target | ran | 1 | 197 | printed the same 72 bytes as the TypeScript oracle |
-| `java` | Java | transpiler-target | ran | 1 | 724 | printed the same 72 bytes as the TypeScript oracle |
-| `cpp` | C++ | transpiler-target | ran | 1 | 483 | printed the same 72 bytes as the TypeScript oracle |
-| `kotlin` | Kotlin | transpiler-target | ran | 1 | 5943 | printed the same 72 bytes as the TypeScript oracle |
-| `swift` | Swift | transpiler-target | ran | 1 | 497 | printed the same 72 bytes as the TypeScript oracle |
-| `rust` | Rust | named-no-emitter | no-emitter | 0 | 18 | no converter written; asked for by asheeas/languages/asheeas-rust, algorithm REQ-036 |
-| `c` | C | named-no-emitter | no-emitter | 0 | 3.7 | no converter written; asked for by asheeas/languages/asheeas-c |
-| `zig` | Zig | named-no-emitter | no-emitter | 0 | 18.4 | no converter written; asked for by asheeas/languages/asheeas-zig |
-| `python` | Python | named-no-emitter | no-emitter | 0 | 5 | no converter written; asked for by asheeas/languages/asheeas-python, algorithm REQ-040 |
+| `ts-five-commits-ago` | TypeScript | algorithm | ran | 1 | 19237.7 | 117/117 tests, 12 scenarios, 0 violations |
+| `ts-main` | TypeScript | algorithm | ran | 1 | 9193.3 | 117/117 tests, 12 scenarios, 0 violations |
+| `go` | Go | transpiler-target | ran | 1 | 253 | printed the same 72 bytes as the TypeScript oracle |
+| `java` | Java | transpiler-target | ran | 1 | 811 | printed the same 72 bytes as the TypeScript oracle |
+| `cpp` | C++ | transpiler-target | ran | 1 | 591 | printed the same 72 bytes as the TypeScript oracle |
+| `kotlin` | Kotlin | transpiler-target | ran | 1 | 6060 | printed the same 72 bytes as the TypeScript oracle |
+| `swift` | Swift | transpiler-target | ran | 1 | 655 | printed the same 72 bytes as the TypeScript oracle |
+| `rust` | Rust | named-no-emitter | no-emitter | 0 | 289.4 | no converter written; asked for by asheeas/languages/asheeas-rust, algorithm REQ-036 |
+| `c` | C | named-no-emitter | no-emitter | 0 | 8.2 | no converter written; asked for by asheeas/languages/asheeas-c |
+| `zig` | Zig | named-no-emitter | no-emitter | 0 | 22.4 | no converter written; asked for by asheeas/languages/asheeas-zig |
+| `python` | Python | named-no-emitter | no-emitter | 0 | 4.7 | no converter written; asked for by asheeas/languages/asheeas-python, algorithm REQ-040 |
 
 ## The native component, beside the eleven
 
 `harness/native/scoreboard.cpp`, built with `g++ -std=c++20 -O2`.
 
 - **Equivalence:** 6/6 digests identical to the TypeScript rendition
-- **Speed:** 18.137 µs per digest natively against 4.261 µs in TypeScript, over 20000 digests of 4096 bytes — TypeScript is 4.35× faster per digest, because `node:crypto` delegates to OpenSSL, which uses the CPU's SHA extensions, while the native rendition here is a portable implementation that uses none
+- **Speed:** 24.162 µs per digest natively against 5.234 µs in TypeScript, over 20000 digests of 4096 bytes — TypeScript is 4.55× faster per digest, because `node:crypto` delegates to OpenSSL, which uses the CPU's SHA extensions, while the native rendition here is a portable implementation that uses none
 
 | Input | Native | TypeScript | Agrees |
 |---|---|---|---|
@@ -52,25 +52,25 @@ finding rather than a placeholder.
 ```
 rendition             kind                accuracy  ms
 --------------------------------------------------------------
-ts-five-commits-ago   algorithm           1.0000    18060.1
-ts-main               algorithm           1.0000    7721.6
-go                    transpiler-target   1.0000    197.0
-java                  transpiler-target   1.0000    724.0
-cpp                   transpiler-target   1.0000    483.0
-kotlin                transpiler-target   1.0000    5943.0
-swift                 transpiler-target   1.0000    497.0
-rust                  named-no-emitter    0.0000    18.0
-c                     named-no-emitter    0.0000    3.7
-zig                   named-no-emitter    0.0000    18.4
-python                named-no-emitter    0.0000    5.0
+ts-five-commits-ago   algorithm           1.0000    19237.7
+ts-main               algorithm           1.0000    9193.3
+go                    transpiler-target   1.0000    253.0
+java                  transpiler-target   1.0000    811.0
+cpp                   transpiler-target   1.0000    591.0
+kotlin                transpiler-target   1.0000    6060.0
+swift                 transpiler-target   1.0000    655.0
+rust                  named-no-emitter    0.0000    289.4
+c                     named-no-emitter    0.0000    8.2
+zig                   named-no-emitter    0.0000    22.4
+python                named-no-emitter    0.0000    4.7
 
 renditions            11
 mean accuracy         0.6364
-total ms              33670.8
-fastest that ran      go (197.0 ms)
-slowest that ran      ts-five-commits-ago (18060.1 ms)
-report digest         810f4bde5abae356
-scoreboard ms         0.112
+total ms              37125.7
+fastest that ran      go (253.0 ms)
+slowest that ran      ts-five-commits-ago (19237.7 ms)
+report digest         dfd2f52b7eca824d
+scoreboard ms         0.120
 ```
 
 ## What this harness cannot do, stated rather than omitted

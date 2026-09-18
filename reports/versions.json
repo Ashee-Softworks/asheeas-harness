@@ -1,5 +1,5 @@
 {
-  "measuredOn": "2026-09-18T04:03:05.453Z",
+  "measuredOn": "2026-09-18T05:06:22.503Z",
   "manifest": "harness/versions.json",
   "count": 11,
   "oracleBytes": 72,
@@ -13,17 +13,17 @@
       "note": "The requested revision. As committed it cannot run: src/engine.ts imports src/cache/lease.ts, which the repository's own `**/cache/` ignore rule never committed.",
       "status": "ran",
       "accuracy": 1,
-      "ms": 18060.1,
+      "ms": 19237.7,
       "tests": {
         "total": 117,
         "passed": 117,
         "failed": 0,
-        "ms": 11742.7
+        "ms": 12520.3
       },
       "catalogue": {
         "scenarios": 12,
         "violations": 0,
-        "ms": 6317.4
+        "ms": 6717.4
       },
       "detail": "117/117 tests, 12 scenarios, 0 violations"
     },
@@ -36,17 +36,17 @@
       "note": "The current tree, which runs.",
       "status": "ran",
       "accuracy": 1,
-      "ms": 7721.6,
+      "ms": 9193.3,
       "tests": {
         "total": 117,
         "passed": 117,
         "failed": 0,
-        "ms": 6527.8
+        "ms": 7404.3
       },
       "catalogue": {
         "scenarios": 12,
         "violations": 0,
-        "ms": 1193.8
+        "ms": 1789
       },
       "detail": "117/117 tests, 12 scenarios, 0 violations"
     },
@@ -58,7 +58,7 @@
       "note": "",
       "status": "ran",
       "accuracy": 1,
-      "ms": 197,
+      "ms": 253,
       "toolchain": "go version go1.26.8-X:nodwarf5 linux/amd64",
       "outputAgreed": true,
       "outputBytes": 72,
@@ -72,7 +72,7 @@
       "note": "",
       "status": "ran",
       "accuracy": 1,
-      "ms": 724,
+      "ms": 811,
       "toolchain": "javac 26.0.1",
       "outputAgreed": true,
       "outputBytes": 72,
@@ -86,7 +86,7 @@
       "note": "The nearest existing thing to a C rendition of the algorithm. It converts the probe program, not the algorithm.",
       "status": "ran",
       "accuracy": 1,
-      "ms": 483,
+      "ms": 591,
       "toolchain": "g++ (GCC) 16.2.1 20260819 (Red Hat 16.2.1-2)",
       "outputAgreed": true,
       "outputBytes": 72,
@@ -100,7 +100,7 @@
       "note": "",
       "status": "ran",
       "accuracy": 1,
-      "ms": 5943,
+      "ms": 6060,
       "toolchain": "WARNING: A restricted method in java.lang.System has been called",
       "outputAgreed": true,
       "outputBytes": 72,
@@ -114,7 +114,7 @@
       "note": "",
       "status": "ran",
       "accuracy": 1,
-      "ms": 497,
+      "ms": 655,
       "toolchain": "Swift version 6.3.2 (swift-6.3.2-RELEASE)",
       "outputAgreed": true,
       "outputBytes": 72,
@@ -127,7 +127,7 @@
       "emitter": null,
       "status": "no-emitter",
       "accuracy": 0,
-      "ms": 18,
+      "ms": 289.4,
       "toolchain": "rustc 1.98.1 (48a229cea 2026-09-01) (Fedora 1.98.1-1.fc44)",
       "detail": "no converter written; asked for by asheeas/languages/asheeas-rust, algorithm REQ-036",
       "note": "Named as a target, no converter written. Unexercised."
@@ -139,7 +139,7 @@
       "emitter": null,
       "status": "no-emitter",
       "accuracy": 0,
-      "ms": 3.7,
+      "ms": 8.2,
       "toolchain": "gcc (GCC) 16.2.1 20260819 (Red Hat 16.2.1-2)",
       "detail": "no converter written; asked for by asheeas/languages/asheeas-c",
       "note": "Named as a target, no converter written. This is the gap the request assumes is closed."
@@ -151,7 +151,7 @@
       "emitter": null,
       "status": "no-emitter",
       "accuracy": 0,
-      "ms": 18.4,
+      "ms": 22.4,
       "toolchain": "0.16.0",
       "detail": "no converter written; asked for by asheeas/languages/asheeas-zig",
       "note": "Named as a target, no converter written. Unexercised."
@@ -163,7 +163,7 @@
       "emitter": null,
       "status": "no-emitter",
       "accuracy": 0,
-      "ms": 5,
+      "ms": 4.7,
       "toolchain": "Python 3.14.7",
       "detail": "no converter written; asked for by asheeas/languages/asheeas-python, algorithm REQ-040",
       "note": "Named as a target, no converter written. Unexercised."
@@ -220,11 +220,11 @@
     "speed": {
       "iterations": 20000,
       "sizeBytes": 4096,
-      "nativeUsPerDigest": 18.137,
-      "typescriptUsPerDigest": 4.261,
-      "factor": 0.23
+      "nativeUsPerDigest": 24.162,
+      "typescriptUsPerDigest": 5.234,
+      "factor": 0.22
     },
     "detail": "6/6 digests identical to the TypeScript rendition"
   },
-  "scoreboard": "rendition             kind                accuracy  ms\n--------------------------------------------------------------\nts-five-commits-ago   algorithm           1.0000    18060.1\nts-main               algorithm           1.0000    7721.6\ngo                    transpiler-target   1.0000    197.0\njava                  transpiler-target   1.0000    724.0\ncpp                   transpiler-target   1.0000    483.0\nkotlin                transpiler-target   1.0000    5943.0\nswift                 transpiler-target   1.0000    497.0\nrust                  named-no-emitter    0.0000    18.0\nc                     named-no-emitter    0.0000    3.7\nzig                   named-no-emitter    0.0000    18.4\npython                named-no-emitter    0.0000    5.0\n\nrenditions            11\nmean accuracy         0.6364\ntotal ms              33670.8\nfastest that ran      go (197.0 ms)\nslowest that ran      ts-five-commits-ago (18060.1 ms)\nreport digest         810f4bde5abae356\nscoreboard ms         0.112\n"
+  "scoreboard": "rendition             kind                accuracy  ms\n--------------------------------------------------------------\nts-five-commits-ago   algorithm           1.0000    19237.7\nts-main               algorithm           1.0000    9193.3\ngo                    transpiler-target   1.0000    253.0\njava                  transpiler-target   1.0000    811.0\ncpp                   transpiler-target   1.0000    591.0\nkotlin                transpiler-target   1.0000    6060.0\nswift                 transpiler-target   1.0000    655.0\nrust                  named-no-emitter    0.0000    289.4\nc                     named-no-emitter    0.0000    8.2\nzig                   named-no-emitter    0.0000    22.4\npython                named-no-emitter    0.0000    4.7\n\nrenditions            11\nmean accuracy         0.6364\ntotal ms              37125.7\nfastest that ran      go (253.0 ms)\nslowest that ran      ts-five-commits-ago (19237.7 ms)\nreport digest         dfd2f52b7eca824d\nscoreboard ms         0.120\n"
 }

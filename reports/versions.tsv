@@ -1,12 +1,12 @@
 # id	kind	accuracy	ms	note
-ts-five-commits-ago	algorithm	1	18060.1	117/117 tests, 12 scenarios, 0 violations
-ts-main	algorithm	1	7721.6	117/117 tests, 12 scenarios, 0 violations
-go	transpiler-target	1	197	printed the same 72 bytes as the TypeScript oracle
-java	transpiler-target	1	724	printed the same 72 bytes as the TypeScript oracle
-cpp	transpiler-target	1	483	printed the same 72 bytes as the TypeScript oracle
-kotlin	transpiler-target	1	5943	printed the same 72 bytes as the TypeScript oracle
-swift	transpiler-target	1	497	printed the same 72 bytes as the TypeScript oracle
-rust	named-no-emitter	0	18	no converter written; asked for by asheeas/languages/asheeas-rust, algorithm REQ-036
-c	named-no-emitter	0	3.7	no converter written; asked for by asheeas/languages/asheeas-c
-zig	named-no-emitter	0	18.4	no converter written; asked for by asheeas/languages/asheeas-zig
-python	named-no-emitter	0	5	no converter written; asked for by asheeas/languages/asheeas-python, algorithm REQ-040
+ts-five-commits-ago	algorithm	1	19237.7	117/117 tests, 12 scenarios, 0 violations
+ts-main	algorithm	1	9193.3	117/117 tests, 12 scenarios, 0 violations
+go	transpiler-target	1	253	printed the same 72 bytes as the TypeScript oracle
+java	transpiler-target	1	811	printed the same 72 bytes as the TypeScript oracle
+cpp	transpiler-target	1	591	printed the same 72 bytes as the TypeScript oracle
+kotlin	transpiler-target	1	6060	printed the same 72 bytes as the TypeScript oracle
+swift	transpiler-target	1	655	printed the same 72 bytes as the TypeScript oracle
+rust	named-no-emitter	0	289.4	no converter written; asked for by asheeas/languages/asheeas-rust, algorithm REQ-036
+c	named-no-emitter	0	8.2	no converter written; asked for by asheeas/languages/asheeas-c
+zig	named-no-emitter	0	22.4	no converter written; asked for by asheeas/languages/asheeas-zig
+python	named-no-emitter	0	4.7	no converter written; asked for by asheeas/languages/asheeas-python, algorithm REQ-040

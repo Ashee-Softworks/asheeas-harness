@@ -1,6 +1,6 @@
 # Kaggle reconnaissance
 
-Measured 2026-09-18T04:02:25+00:00. Kaggle API v1, read-only. No rules accepted, no competition entered, nothing submitted.
+Measured 2026-09-18T05:05:37+00:00. Kaggle API v1, read-only. No rules accepted, no competition entered, nothing submitted.
 
 ## Outcome
 
@@ -17,7 +17,7 @@ Measured 2026-09-18T04:02:25+00:00. Kaggle API v1, read-only. No rules accepted,
 | Competition | Prize | Entered | Rank | Rules | Deadline |
 |---|---|---|---|---|---|
 | [ARC Prize 2026 - ARC-AGI-2](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2) | 700,000 Usd | no | — | not-accepted | 2026-11-02T23:59 |
-| [ARC Prize 2026 - ARC-AGI-3](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-3) | 850,000 Usd | yes | 2702 | accepted | 2026-11-02T23:59 |
+| [ARC Prize 2026 - ARC-AGI-3](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-3) | 850,000 Usd | yes | 2704 | accepted | 2026-11-02T23:59 |
 | [ARC Prize 2026 - Paper Track](https://www.kaggle.com/competitions/arc-prize-2026-paper-track) | 450,000 Usd | no | — | not-accepted | 2026-11-09T23:59 |
 | [Biohub - Cell Tracking During Development](https://www.kaggle.com/competitions/biohub-cell-tracking-during-development) | 60,000 Usd | no | — | not-accepted | 2026-09-29T23:59 |
 | [Enveda CASMI 2026 - Molecule ID From Mass Spectra](https://www.kaggle.com/competitions/enveda-CASMI26-molecule-id-mass-spectra) | 50,000 Usd | no | — | not-accepted | 2026-12-14T23:59 |
