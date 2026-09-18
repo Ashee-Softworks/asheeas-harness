@@ -41,15 +41,34 @@ saying so out loud so nobody has to guess. Test the apps however you like.
 - Every number we publish comes with the command that produced it — including the ones that
   make us look bad.
 
+### Where to find us
+
+*(Placeholders. **None of these accounts exist yet** — fill in or delete before publishing.)*
+
+| | |
+|---|---|
+| GitHub | https://github.com/Ashee-Softworks — **the only verified link** |
+| YouTube | `[channel URL]` |
+| X / Twitter | `@[handle]` |
+| LinkedIn | `[profile URL]` |
+| Discord | `[invite]` |
+
+The GitHub organisation is the only one of these that is real and checkable today. The
+strategy plan (`algorithm/plans/stratagy_07.md`) anticipates building the rest — it names
+LinkedIn, X and Discord communities as places for presence to accumulate, and names
+ThePrimeagen and Theo as the developer audiences worth reaching — but **no handles are
+recorded anywhere in the repository**, so there is nothing to link to yet.
+
 ---
 
-## Confirmations needed from the owner — three things only you can decide
+## Confirmations needed from the owner — four things only you can decide
 
 | # | Decision | Why it is yours |
 |---|---|---|
 | 1 | **The attribution.** "Abdul-Rasheed Said Boakye, CEO of Ashee Softworks" — is that the correct name, title and spelling for publication? | It is your name, and it goes out as a public statement |
 | 2 | **The two days.** Which two dates? The post currently says "the next two days" | It is a commitment to strangers, and it needs real dates |
 | 3 | **The platform.** Fix the two recorded blockers, or the invitation is a dead link | See below |
+| 4 | **The social links.** The section above is placeholders — GitHub is the only account that exists | No handles are recorded in any repository, so they cannot be filled in from here |
 
 ## Not yet true — do not publish until it is
 
