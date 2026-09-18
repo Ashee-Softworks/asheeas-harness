@@ -1,6 +1,6 @@
 # System ledger
 
-Snapshot taken 2026-09-18T06:15:10+00:00.
+Snapshot taken 2026-09-18T06:25:54+00:00.
 
 Every field is read from git, from results/submissions.json or from reports/*.json, and none is typed. This is a snapshot and is rewritten on each run; the history of what the system did lives in git log.
 
@@ -13,7 +13,7 @@ Every field is read from git, from results/submissions.json or from reports/*.js
 | `asheeas` | Ashee-Softworks/asheeas | main | `a94e2d305` | 0 | 2026-09-17T18:08:36 |
 | `transpiler` | Ashee-Softworks/transpiler | main | `52548138c` | 0 | 2026-09-17T01:09:31 |
 | `arc-agi-3-staging` | Ashee-Softworks/arc-agi-3 | main | `a56a7450f` | 5 | 2026-09-17T22:52:24 |
-| `harness` | Ashee-Softworks/asheeas-harness | main | `8b61d6655` | 3 | 2026-09-18T05:32:25 |
+| `harness` | Ashee-Softworks/asheeas-harness | main | `edefc6ae8` | 0 | 2026-09-18T06:25:54 |
 | `ashee-chat` | Ashee-Softworks/ashee-chat | main | `15e4814aa` | 2 | 2026-09-18T05:02:19 |
 | `kaggriculture` | Ashee-Softworks/kaggriculture | main | `7772ab13b` | 0 | 2026-09-18T06:14:22 |
 
@@ -82,8 +82,10 @@ Every field is read from git, from results/submissions.json or from reports/*.js
 - `a56a745` 2026-09-17T22:52:24 docs: how to test ARC-AGI-3 against their server, with the output it actually produced
 - `3f8e953` 2026-09-17T20:10:23 feat: the ARC-AGI-3 harness, written blind and frozen before any game is observed
 
-**`harness`** — feat(recon): find out what a competition is before agreeing to its terms
+**`harness`** — feat(observations): the planner test, run as an observer and reported as a refusal
 
+- `edefc6a` 2026-09-18T06:25:54 feat(observations): the planner test, run as an observer and reported as a refusal
+- `8523c5a` 2026-09-18T06:15:10 feat(ledger): one snapshot of every tree, every submission and every measured result
 - `8b61d66` 2026-09-18T05:32:25 feat(recon): find out what a competition is before agreeing to its terms
 - `47a19f7` 2026-09-18T05:07:54 chore(reports): the measurements, re-taken
 - `6ebb903` 2026-09-18T04:58:29 feat(harness): measure every rendition of the algorithm, and read the competitions before entering them

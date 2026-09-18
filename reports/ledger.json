@@ -1,5 +1,5 @@
 {
-  "snapshotAt": "2026-09-18T06:15:10+00:00",
+  "snapshotAt": "2026-09-18T06:25:54+00:00",
   "note": "Every field is read from git, from results/submissions.json or from reports/*.json, and none is typed. This is a snapshot and is rewritten on each run; the history of what the system did lives in git log.",
   "repositories": [
     {
@@ -151,11 +151,21 @@
       "remote": "Ashee-Softworks/asheeas-harness",
       "present": true,
       "branch": "main",
-      "head": "8b61d6655",
-      "headDate": "2026-09-18T05:32:25Z",
-      "headSubject": "feat(recon): find out what a competition is before agreeing to its terms",
-      "dirtyFiles": 3,
+      "head": "edefc6ae8",
+      "headDate": "2026-09-18T06:25:54Z",
+      "headSubject": "feat(observations): the planner test, run as an observer and reported as a refusal",
+      "dirtyFiles": 0,
       "commits": [
+        {
+          "sha": "edefc6a",
+          "date": "2026-09-18T06:25:54Z",
+          "subject": "feat(observations): the planner test, run as an observer and reported as a refusal"
+        },
+        {
+          "sha": "8523c5a",
+          "date": "2026-09-18T06:15:10Z",
+          "subject": "feat(ledger): one snapshot of every tree, every submission and every measured result"
+        },
         {
           "sha": "8b61d66",
           "date": "2026-09-18T05:32:25Z",
