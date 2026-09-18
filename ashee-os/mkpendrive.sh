@@ -35,8 +35,19 @@ rm -rf "$OUT"
 mkdir -p "$OUT/root"/{bin,dev,proc,sys,tmp,run,archive}
 R="$OUT/root"
 
-# The base tools, unchanged from mkinitramfs.sh, plus the three this image needs.
-TOOLS="sh bash ls cat mount umount uname df dmesg grep sed head tail awk cut printf sleep wc tr sort clear ps free nproc"
+# The base tools, plus everything the init and the tests actually call.
+#
+# **This list is the whole lesson of the pen-drive build.** The first version carried the base tools
+# and nothing else, and it booted to a shell that looked finished. Then the self-test ran and found:
+#
+#   find       missing  ->  "files restored 0", which reads as a failed restore
+#   poweroff   missing  ->  a kernel panic on shutdown, which reads as a broken operating system
+#   mkdir rm   missing  ->  the system could not create or remove a file
+#   cp mv ln   missing  ->  nor copy or move one
+#
+# **A shell that starts is not a system that works.** Every one of those gaps was invisible until
+# something called the command, and an unbundled applet looks exactly like a working one until then.
+TOOLS="sh ls cat mount umount uname df dmesg grep sed head tail awk cut printf sleep wc tr sort clear ps free nproc find du tar gzip mkdir rmdir rm cp mv ln date id whoami echo true false poweroff reboot halt"
 EXTRA="git tar gzip"
 
 libs=""
