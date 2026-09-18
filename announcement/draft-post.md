@@ -43,21 +43,41 @@ saying so out loud so nobody has to guess. Test the apps however you like.
 
 ### Where to find us
 
-*(Placeholders. **None of these accounts exist yet** — fill in or delete before publishing.)*
+**Verified live** — each returned HTTP 200 when checked on 2026-09-18:
 
 | | |
 |---|---|
-| GitHub | https://github.com/Ashee-Softworks — **the only verified link** |
+| Website | **https://asheeui.com** |
+| GitHub — components | **https://github.com/AsheeSoftworks/AsheeUI** |
+| GitHub — organisation | https://github.com/AsheeSoftworks |
+| GitHub — organisation | https://github.com/Ashee-Softworks |
+| Contact | asheesoftworks@gmail.com |
+
+**Not yet created** — fill in or delete before publishing:
+
+| | |
+|---|---|
 | YouTube | `[channel URL]` |
 | X / Twitter | `@[handle]` |
 | LinkedIn | `[profile URL]` |
 | Discord | `[invite]` |
 
-The GitHub organisation is the only one of these that is real and checkable today. The
-strategy plan (`algorithm/plans/stratagy_07.md`) anticipates building the rest — it names
-LinkedIn, X and Discord communities as places for presence to accumulate, and names
-ThePrimeagen and Theo as the developer audiences worth reaching — but **no handles are
-recorded anywhere in the repository**, so there is nothing to link to yet.
+### Correction — appended, not edited away
+
+An earlier version of this draft said *"no Ashee Softworks account exists in any
+repository"* and named GitHub as *"the only verified link."* **Both statements were wrong.**
+
+- **GitHub and LinkedIn are social platforms.** The earlier draft defined "social" as
+  YouTube, X, Instagram and Discord, which excluded them for no stated reason. Corrected.
+- **Presence already exists.** `https://asheeui.com`, both GitHub organisations, and the
+  public `AsheeUI` repository were all live. The earlier check looked for social URLs in
+  `.md`/`.json`/`.ts` files and found only npm package authors inside `node_modules` — it
+  never checked the package metadata it had already read, and never checked whether the
+  obvious URLs resolved.
+
+Recorded rather than rewritten, per this repository's own rule: *"Mistakes are recorded, not
+edited away. A log whose errors have been quietly fixed cannot be used to judge whether a
+claim should be trusted."*
 
 ---
 
