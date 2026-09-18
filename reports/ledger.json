@@ -1,0 +1,360 @@
+{
+  "snapshotAt": "2026-09-18T06:15:10+00:00",
+  "note": "Every field is read from git, from results/submissions.json or from reports/*.json, and none is typed. This is a snapshot and is rewritten on each run; the history of what the system did lives in git log.",
+  "repositories": [
+    {
+      "name": "algorithm",
+      "remote": "Ashee-Softworks/algorithm",
+      "present": true,
+      "branch": "main",
+      "head": "d57105c83",
+      "headDate": "2026-09-17T20:09:33Z",
+      "headSubject": "chore(reports): commit the scenario bench, and record that it overwrote a different one",
+      "dirtyFiles": 0,
+      "commits": [
+        {
+          "sha": "d57105c",
+          "date": "2026-09-17T20:09:33Z",
+          "subject": "chore(reports): commit the scenario bench, and record that it overwrote a different one"
+        },
+        {
+          "sha": "578c581",
+          "date": "2026-09-17T14:26:35Z",
+          "subject": "feat(record): join the action table to the engine, and write the first integration test"
+        },
+        {
+          "sha": "06c71e2",
+          "date": "2026-09-17T06:01:04Z",
+          "subject": "feat(record): the action table -- good, bad, neutral, explanation and error"
+        },
+        {
+          "sha": "0f9c263",
+          "date": "2026-09-17T04:54:54Z",
+          "subject": "fix(vendor): stop recording fetched runners as unresolvable gitlinks"
+        },
+        {
+          "sha": "88ecf1c",
+          "date": "2026-09-17T03:22:27Z",
+          "subject": "Fix formatter violation in the second-opinion usage line"
+        }
+      ]
+    },
+    {
+      "name": "algorithm-main",
+      "remote": "(worktree of algorithm)",
+      "present": true,
+      "branch": "",
+      "head": "",
+      "headDate": "",
+      "headSubject": "",
+      "dirtyFiles": 0,
+      "commits": []
+    },
+    {
+      "name": "asheeas",
+      "remote": "Ashee-Softworks/asheeas",
+      "present": true,
+      "branch": "main",
+      "head": "a94e2d305",
+      "headDate": "2026-09-17T18:08:36Z",
+      "headSubject": "chore(gitignore): keep the algorithm CLI's cache out of the composition",
+      "dirtyFiles": 0,
+      "commits": [
+        {
+          "sha": "a94e2d3",
+          "date": "2026-09-17T18:08:36Z",
+          "subject": "chore(gitignore): keep the algorithm CLI's cache out of the composition"
+        },
+        {
+          "sha": "92dd163",
+          "date": "2026-09-17T18:05:29Z",
+          "subject": "fix(user-prompt): verification.json was unparseable, so the algorithm could never read it"
+        },
+        {
+          "sha": "db42f49",
+          "date": "2026-09-17T17:59:37Z",
+          "subject": "chore: commit Ashee's note in PROJECT.md, found uncommitted"
+        },
+        {
+          "sha": "b753204",
+          "date": "2026-09-17T17:58:42Z",
+          "subject": "docs(inherited): how I introduce myself to the team, in my own words"
+        },
+        {
+          "sha": "4b0273a",
+          "date": "2026-09-17T11:05:39Z",
+          "subject": "chore(gitignore): keep the nested client clone out of the composition"
+        }
+      ]
+    },
+    {
+      "name": "transpiler",
+      "remote": "Ashee-Softworks/transpiler",
+      "present": true,
+      "branch": "main",
+      "head": "52548138c",
+      "headDate": "2026-09-17T01:09:31Z",
+      "headSubject": "feat(frontend): open the type environment \u2014 Node types, NodeNext resolution, .ts specifiers \u2014 while the runtime stays closed",
+      "dirtyFiles": 0,
+      "commits": [
+        {
+          "sha": "5254813",
+          "date": "2026-09-17T01:09:31Z",
+          "subject": "feat(frontend): open the type environment \u2014 Node types, NodeNext resolution, .ts specifiers \u2014 while the runtime stays closed"
+        },
+        {
+          "sha": "31958da",
+          "date": "2026-09-16T21:34:17Z",
+          "subject": "chore(transpiler): verified improvement, round 1 \u2014 26 file(s) changed (4/4 gates passed)"
+        },
+        {
+          "sha": "c5f65e3",
+          "date": "2026-09-16T20:52:36Z",
+          "subject": "docs(transpiler): admin guide, journal, decision records DD-001..DD-003 recording what F-001 forced"
+        },
+        {
+          "sha": "c06007f",
+          "date": "2026-09-16T20:21:53Z",
+          "subject": "chore(transpiler): verified improvement, round 1 \u2014 2 file(s) changed (4/4 gates passed)"
+        },
+        {
+          "sha": "2f86e05",
+          "date": "2026-09-16T18:11:01Z",
+          "subject": "chore(transpiler): verified improvement, round 1 \u2014 2 file(s) changed (4/4 gates passed)"
+        }
+      ]
+    },
+    {
+      "name": "arc-agi-3-staging",
+      "remote": "Ashee-Softworks/arc-agi-3",
+      "present": true,
+      "branch": "main",
+      "head": "a56a7450f",
+      "headDate": "2026-09-17T22:52:24Z",
+      "headSubject": "docs: how to test ARC-AGI-3 against their server, with the output it actually produced",
+      "dirtyFiles": 5,
+      "commits": [
+        {
+          "sha": "a56a745",
+          "date": "2026-09-17T22:52:24Z",
+          "subject": "docs: how to test ARC-AGI-3 against their server, with the output it actually produced"
+        },
+        {
+          "sha": "3f8e953",
+          "date": "2026-09-17T20:10:23Z",
+          "subject": "feat: the ARC-AGI-3 harness, written blind and frozen before any game is observed"
+        }
+      ]
+    },
+    {
+      "name": "harness",
+      "remote": "Ashee-Softworks/asheeas-harness",
+      "present": true,
+      "branch": "main",
+      "head": "8b61d6655",
+      "headDate": "2026-09-18T05:32:25Z",
+      "headSubject": "feat(recon): find out what a competition is before agreeing to its terms",
+      "dirtyFiles": 3,
+      "commits": [
+        {
+          "sha": "8b61d66",
+          "date": "2026-09-18T05:32:25Z",
+          "subject": "feat(recon): find out what a competition is before agreeing to its terms"
+        },
+        {
+          "sha": "47a19f7",
+          "date": "2026-09-18T05:07:54Z",
+          "subject": "chore(reports): the measurements, re-taken"
+        },
+        {
+          "sha": "6ebb903",
+          "date": "2026-09-18T04:58:29Z",
+          "subject": "feat(harness): measure every rendition of the algorithm, and read the competitions before entering them"
+        }
+      ]
+    },
+    {
+      "name": "ashee-chat",
+      "remote": "Ashee-Softworks/ashee-chat",
+      "present": true,
+      "branch": "main",
+      "head": "15e4814aa",
+      "headDate": "2026-09-18T05:02:19Z",
+      "headSubject": "feat(chat): a local-model interface on Next and AsheeUI, straight to the model",
+      "dirtyFiles": 2,
+      "commits": [
+        {
+          "sha": "15e4814",
+          "date": "2026-09-18T05:02:19Z",
+          "subject": "feat(chat): a local-model interface on Next and AsheeUI, straight to the model"
+        }
+      ]
+    },
+    {
+      "name": "kaggriculture",
+      "remote": "Ashee-Softworks/kaggriculture",
+      "present": true,
+      "branch": "main",
+      "head": "7772ab13b",
+      "headDate": "2026-09-18T06:14:22Z",
+      "headSubject": "feat(results): a submission ledger, the episode analyses, and the real outcome",
+      "dirtyFiles": 0,
+      "commits": [
+        {
+          "sha": "7772ab1",
+          "date": "2026-09-18T06:14:22Z",
+          "subject": "feat(results): a submission ledger, the episode analyses, and the real outcome"
+        },
+        {
+          "sha": "f23571e",
+          "date": "2026-09-18T05:30:31Z",
+          "subject": "feat(kaggriculture): an agent, and a local harness that runs Kaggle's own interpreter"
+        }
+      ]
+    }
+  ],
+  "submissions": {
+    "present": true,
+    "submissions": [
+      {
+        "submissionId": 56322264,
+        "attemptedAt": "2026-09-18T05:59:32+00:00",
+        "message": "wheat loop, 3 hands, parity with starter local bench",
+        "outcome": "accepted",
+        "agentCommit": "f23571e75ba29ad7436b1159a9a4f8d874ec8b1a",
+        "agentSha256": "b14ef7a965363945305e8f2a8b2129de0a4c63ba632af1fa3a5587bb5a87c4a1",
+        "status": "complete",
+        "score": "484.7",
+        "history": [
+          {
+            "at": "2026-09-18T05:59:32+00:00",
+            "status": "attempted",
+            "score": null
+          },
+          {
+            "at": "2026-09-18T05:59:36+00:00",
+            "status": "accepted",
+            "score": null
+          },
+          {
+            "at": "2026-09-18T06:04:19+00:00",
+            "status": "identified",
+            "score": null
+          },
+          {
+            "at": "2026-09-18T06:04:19+00:00",
+            "status": "complete",
+            "score": "600.0"
+          },
+          {
+            "at": "2026-09-18T06:09:43+00:00",
+            "status": "complete",
+            "score": "484.7"
+          }
+        ]
+      }
+    ],
+    "refreshes": 3
+  },
+  "episodes": [
+    {
+      "episode": "110329561",
+      "steps": 720,
+      "rewards": [
+        3869.0,
+        3869.0
+      ],
+      "quadrants": [
+        [
+          "NW",
+          "NE"
+        ],
+        [
+          "NW",
+          "NE"
+        ]
+      ]
+    },
+    {
+      "episode": "110330784",
+      "steps": 720,
+      "rewards": [
+        4087.0,
+        91360.0
+      ],
+      "quadrants": [
+        [
+          "NW",
+          "NE"
+        ],
+        [
+          "NW",
+          "NE",
+          "SW"
+        ]
+      ]
+    }
+  ],
+  "renditions": {
+    "present": true,
+    "measuredOn": "2026-09-18T05:06:22.503Z",
+    "count": 11,
+    "ran": 7,
+    "meanAccuracy": 0.6364,
+    "native": "ran"
+  },
+  "competitions": {
+    "present": true,
+    "measuredOn": "2026-09-18T05:05:37+00:00",
+    "competitions": [
+      {
+        "slug": "arc-prize-2026-arc-agi-2",
+        "found": true,
+        "reward": "700,000 Usd",
+        "entered": false,
+        "rank": 0,
+        "rules": "not-accepted"
+      },
+      {
+        "slug": "arc-prize-2026-arc-agi-3",
+        "found": true,
+        "reward": "850,000 Usd",
+        "entered": true,
+        "rank": 2704,
+        "rules": "accepted"
+      },
+      {
+        "slug": "arc-prize-2026-paper-track",
+        "found": true,
+        "reward": "450,000 Usd",
+        "entered": false,
+        "rank": 0,
+        "rules": "not-accepted"
+      },
+      {
+        "slug": "biohub-cell-tracking-during-development",
+        "found": true,
+        "reward": "60,000 Usd",
+        "entered": false,
+        "rank": 0,
+        "rules": "not-accepted"
+      },
+      {
+        "slug": "enveda-CASMI26-molecule-id-mass-spectra",
+        "found": true,
+        "reward": "50,000 Usd",
+        "entered": false,
+        "rank": 0,
+        "rules": "not-accepted"
+      },
+      {
+        "slug": "kaggriculture",
+        "found": true,
+        "reward": "50,000 Usd",
+        "entered": false,
+        "rank": 0,
+        "rules": "not-accepted"
+      }
+    ]
+  }
+}
