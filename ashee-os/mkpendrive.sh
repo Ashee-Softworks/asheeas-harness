@@ -170,13 +170,33 @@ printf '  tools       %s in /bin\n' "$(ls /bin | wc -l)"
 printf '  git         %s\n' "$(head -1 /archive/PROVENANCE 2>/dev/null | cut -d' ' -f2 || echo absent)"
 printf '\n'
 
-# The framebuffer. Said plainly either way: this was never verified, and a blank line would look
-# like an unfinished feature rather than a result.
-if [ -r /proc/fb ] && [ -s /proc/fb ]; then
-  printf '  framebuffer PRESENT\n'
-  sed 's/^/    /' /proc/fb
+# The display, reported as TWO interfaces rather than one verdict.
+#
+# **The first version of this check tested `/proc/fb` and concluded "nothing can be drawn".** On a
+# UEFI boot the kernel had logged `fb0: simpledrmdrmfb frame buffer device` and `/dev/dri/card0`
+# existed -- so the OS reported a confident negative about a display that was there, using an
+# interface it had not looked at.
+#
+# `/proc/fb` and `/dev/fb0` are the LEGACY fbdev interface. `/dev/dri/card0` is DRM/KMS. They are
+# different APIs and one can exist without the other; `simpledrm` is a DRM driver, so the fbdev node
+# is the compatibility layer and may or may not appear. **Reporting them separately means the output
+# says what is true instead of what a single test concluded.**
+printf '  display\n'
+if [ -s /proc/fb ]; then
+  printf '    fbdev      /proc/fb present\n'
+  sed 's/^/               /' /proc/fb
 else
-  printf '  framebuffer ABSENT -- no /proc/fb entry, so nothing can be drawn\n'
+  printf '    fbdev      /proc/fb absent -- the legacy interface is not registered\n'
+fi
+if [ -e /dev/fb0 ]; then
+  printf '    /dev/fb0   present\n'
+else
+  printf '    /dev/fb0   absent -- a mapper that opens this cannot open anything\n'
+fi
+if [ -e /dev/dri/card0 ]; then
+  printf '    DRM        /dev/dri/card0 PRESENT -- this is the interface that exists\n'
+else
+  printf '    DRM        /dev/dri/card0 absent\n'
 fi
 printf '\n'
 

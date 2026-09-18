@@ -33,6 +33,22 @@ R="$OUT/root"
 # ---------------------------------------------------------------------------------------------
 # The tools. Every one of these is a question already answered -- ls, cat, mount, sh -- and not
 # one of them is written here.
+#
+# ## What this list deliberately does NOT carry, and why that is a decision rather than an oversight
+#
+# `find`, `mkdir`, `rm`, `cp`, `mv`, `tar`, `poweroff` are all absent. **This image therefore cannot
+# create a file, copy one, remove one, extract an archive, or shut down cleanly** -- `poweroff`
+# missing means PID 1 exits and the kernel panics with "Attempted to kill init".
+#
+# That was found by *running* it: a self-test asked the image to do a job and every such call
+# returned "not found", which reads as a failed operation rather than a missing applet. See
+# `mkpendrive.sh`, which carries 49 applets including these and is the image you would actually
+# boot.
+#
+# They are still absent here on purpose. **This script exists to produce one number** -- the
+# smallest closure that is genuinely an operating system -- and every applet added changes what that
+# number measures. `mkpendrive.sh` is the usable image; this is the measurement. Keeping them in one
+# script would have made the number mean nothing.
 TOOLS="sh bash ls cat mount umount uname df dmesg grep sed head tail awk cut printf sleep wc tr sort clear ps free nproc"
 libs=""
 for t in $TOOLS; do
