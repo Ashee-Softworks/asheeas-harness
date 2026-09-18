@@ -3,6 +3,15 @@
 **Status: NOT PUBLISHED.** This is the compromise: the system drafts what it is
 comfortable standing behind, and the owner confirms before anything leaves this machine.
 
+## The theme
+
+> **Human works with AI to improve the future.**
+
+That is the line. It is the only version of this that survives what was learned building it,
+because it is the only one that is true: the AI has no self-model, no goals and no memory
+between runs, and a human decides everything that matters. What it is for is the work, not
+the claim.
+
 ## The rule this draft follows
 
 It will only say what it can back with a command. So this draft states what is verified,
