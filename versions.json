@@ -1,0 +1,128 @@
+{
+  "note": "Every rendition of the algorithm that the record actually names, in one list. Nothing here is invented: each entry cites where it is recorded and what exists for it. A rendition with no emitter is listed rather than omitted, because the gap is the measurement.",
+  "measuredOn": "2026-09-18",
+  "sources": [
+    "reports/languages.json",
+    "reports/TRANSPILE-REPORT.md",
+    "asheeas/README.md",
+    "transpiler/src/language.ts",
+    "transpiler/README.md"
+  ],
+  "count": 11,
+  "reference": {
+    "id": "ts-main",
+    "why": "The only rendition that implements the algorithm. Every other entry is measured against the probe program the transpiler can convert, not against the algorithm, because the algorithm is outside the transpiler's source language and is refused by name and by line."
+  },
+  "renditions": [
+    {
+      "id": "ts-five-commits-ago",
+      "language": "TypeScript",
+      "kind": "algorithm",
+      "root": "algorithm",
+      "revision": "1a3d528",
+      "emitter": "n/a — this is the source",
+      "note": "The requested revision. As committed it cannot run: src/engine.ts imports src/cache/lease.ts, which the repository's own `**/cache/` ignore rule never committed.",
+      "restoredBy": "composer/compose.sh"
+    },
+    {
+      "id": "ts-main",
+      "language": "TypeScript",
+      "kind": "algorithm",
+      "root": "algorithm-main",
+      "revision": "d57105c",
+      "emitter": "n/a — this is the source",
+      "note": "The current tree, which runs."
+    },
+    {
+      "id": "go",
+      "language": "Go",
+      "kind": "transpiler-target",
+      "target": "go",
+      "emitter": "transpiler/src/emit/go.ts",
+      "probe": "examples/fizzbuzz.ts",
+      "recorded": "reports/languages.json"
+    },
+    {
+      "id": "java",
+      "language": "Java",
+      "kind": "transpiler-target",
+      "target": "java",
+      "emitter": "transpiler/src/emit/java.ts",
+      "probe": "examples/fizzbuzz.ts",
+      "recorded": "reports/languages.json"
+    },
+    {
+      "id": "cpp",
+      "language": "C++",
+      "kind": "transpiler-target",
+      "target": "cpp",
+      "emitter": "transpiler/src/emit/cpp.ts",
+      "probe": "examples/fizzbuzz.ts",
+      "recorded": "reports/languages.json",
+      "note": "The nearest existing thing to a C rendition of the algorithm. It converts the probe program, not the algorithm."
+    },
+    {
+      "id": "kotlin",
+      "language": "Kotlin",
+      "kind": "transpiler-target",
+      "target": "kotlin",
+      "emitter": "transpiler/src/emit/kotlin.ts",
+      "probe": "examples/fizzbuzz.ts",
+      "recorded": "reports/languages.json"
+    },
+    {
+      "id": "swift",
+      "language": "Swift",
+      "kind": "transpiler-target",
+      "target": "swift",
+      "emitter": "transpiler/src/emit/swift.ts",
+      "probe": "examples/fizzbuzz.ts",
+      "recorded": "reports/languages.json"
+    },
+    {
+      "id": "rust",
+      "language": "Rust",
+      "kind": "named-no-emitter",
+      "emitter": null,
+      "askedBy": "asheeas/languages/asheeas-rust, algorithm REQ-036",
+      "toolchainProbe": "rustc --version",
+      "recorded": "reports/languages.json",
+      "note": "Named as a target, no converter written. Unexercised."
+    },
+    {
+      "id": "c",
+      "language": "C",
+      "kind": "named-no-emitter",
+      "emitter": null,
+      "askedBy": "asheeas/languages/asheeas-c",
+      "toolchainProbe": "gcc --version",
+      "recorded": "reports/languages.json",
+      "note": "Named as a target, no converter written. This is the gap the request assumes is closed."
+    },
+    {
+      "id": "zig",
+      "language": "Zig",
+      "kind": "named-no-emitter",
+      "emitter": null,
+      "askedBy": "asheeas/languages/asheeas-zig",
+      "toolchainProbe": "zig version",
+      "recorded": "reports/languages.json",
+      "note": "Named as a target, no converter written. Unexercised."
+    },
+    {
+      "id": "python",
+      "language": "Python",
+      "kind": "named-no-emitter",
+      "emitter": null,
+      "askedBy": "asheeas/languages/asheeas-python, algorithm REQ-040",
+      "toolchainProbe": "python3 --version",
+      "recorded": "reports/languages.json",
+      "note": "Named as a target, no converter written. Unexercised."
+    }
+  ],
+  "askedForButNeverRecorded": {
+    "asked": "14",
+    "found": 11,
+    "note": "The request said 11 versions; the sources record 14 asked, 5 emitters and 9 named languages. This file lists the 11 things that are actually nameable — 2 TypeScript trees, 5 emitters, 4 named languages with no emitter — so that the eleven is a list with evidence behind it rather than a number repeated back."
+  }
+}

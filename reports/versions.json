@@ -1,0 +1,230 @@
+{
+  "measuredOn": "2026-09-18T04:03:05.453Z",
+  "manifest": "harness/versions.json",
+  "count": 11,
+  "oracleBytes": 72,
+  "renditions": [
+    {
+      "id": "ts-five-commits-ago",
+      "kind": "algorithm",
+      "language": "TypeScript",
+      "revision": "1a3d528",
+      "cwd": "algorithm",
+      "note": "The requested revision. As committed it cannot run: src/engine.ts imports src/cache/lease.ts, which the repository's own `**/cache/` ignore rule never committed.",
+      "status": "ran",
+      "accuracy": 1,
+      "ms": 18060.1,
+      "tests": {
+        "total": 117,
+        "passed": 117,
+        "failed": 0,
+        "ms": 11742.7
+      },
+      "catalogue": {
+        "scenarios": 12,
+        "violations": 0,
+        "ms": 6317.4
+      },
+      "detail": "117/117 tests, 12 scenarios, 0 violations"
+    },
+    {
+      "id": "ts-main",
+      "kind": "algorithm",
+      "language": "TypeScript",
+      "revision": "d57105c",
+      "cwd": "algorithm-main",
+      "note": "The current tree, which runs.",
+      "status": "ran",
+      "accuracy": 1,
+      "ms": 7721.6,
+      "tests": {
+        "total": 117,
+        "passed": 117,
+        "failed": 0,
+        "ms": 6527.8
+      },
+      "catalogue": {
+        "scenarios": 12,
+        "violations": 0,
+        "ms": 1193.8
+      },
+      "detail": "117/117 tests, 12 scenarios, 0 violations"
+    },
+    {
+      "id": "go",
+      "kind": "transpiler-target",
+      "language": "Go",
+      "emitter": "transpiler/src/emit/go.ts",
+      "note": "",
+      "status": "ran",
+      "accuracy": 1,
+      "ms": 197,
+      "toolchain": "go version go1.26.8-X:nodwarf5 linux/amd64",
+      "outputAgreed": true,
+      "outputBytes": 72,
+      "detail": "printed the same 72 bytes as the TypeScript oracle"
+    },
+    {
+      "id": "java",
+      "kind": "transpiler-target",
+      "language": "Java",
+      "emitter": "transpiler/src/emit/java.ts",
+      "note": "",
+      "status": "ran",
+      "accuracy": 1,
+      "ms": 724,
+      "toolchain": "javac 26.0.1",
+      "outputAgreed": true,
+      "outputBytes": 72,
+      "detail": "printed the same 72 bytes as the TypeScript oracle"
+    },
+    {
+      "id": "cpp",
+      "kind": "transpiler-target",
+      "language": "C++",
+      "emitter": "transpiler/src/emit/cpp.ts",
+      "note": "The nearest existing thing to a C rendition of the algorithm. It converts the probe program, not the algorithm.",
+      "status": "ran",
+      "accuracy": 1,
+      "ms": 483,
+      "toolchain": "g++ (GCC) 16.2.1 20260819 (Red Hat 16.2.1-2)",
+      "outputAgreed": true,
+      "outputBytes": 72,
+      "detail": "printed the same 72 bytes as the TypeScript oracle"
+    },
+    {
+      "id": "kotlin",
+      "kind": "transpiler-target",
+      "language": "Kotlin",
+      "emitter": "transpiler/src/emit/kotlin.ts",
+      "note": "",
+      "status": "ran",
+      "accuracy": 1,
+      "ms": 5943,
+      "toolchain": "WARNING: A restricted method in java.lang.System has been called",
+      "outputAgreed": true,
+      "outputBytes": 72,
+      "detail": "printed the same 72 bytes as the TypeScript oracle"
+    },
+    {
+      "id": "swift",
+      "kind": "transpiler-target",
+      "language": "Swift",
+      "emitter": "transpiler/src/emit/swift.ts",
+      "note": "",
+      "status": "ran",
+      "accuracy": 1,
+      "ms": 497,
+      "toolchain": "Swift version 6.3.2 (swift-6.3.2-RELEASE)",
+      "outputAgreed": true,
+      "outputBytes": 72,
+      "detail": "printed the same 72 bytes as the TypeScript oracle"
+    },
+    {
+      "id": "rust",
+      "kind": "named-no-emitter",
+      "language": "Rust",
+      "emitter": null,
+      "status": "no-emitter",
+      "accuracy": 0,
+      "ms": 18,
+      "toolchain": "rustc 1.98.1 (48a229cea 2026-09-01) (Fedora 1.98.1-1.fc44)",
+      "detail": "no converter written; asked for by asheeas/languages/asheeas-rust, algorithm REQ-036",
+      "note": "Named as a target, no converter written. Unexercised."
+    },
+    {
+      "id": "c",
+      "kind": "named-no-emitter",
+      "language": "C",
+      "emitter": null,
+      "status": "no-emitter",
+      "accuracy": 0,
+      "ms": 3.7,
+      "toolchain": "gcc (GCC) 16.2.1 20260819 (Red Hat 16.2.1-2)",
+      "detail": "no converter written; asked for by asheeas/languages/asheeas-c",
+      "note": "Named as a target, no converter written. This is the gap the request assumes is closed."
+    },
+    {
+      "id": "zig",
+      "kind": "named-no-emitter",
+      "language": "Zig",
+      "emitter": null,
+      "status": "no-emitter",
+      "accuracy": 0,
+      "ms": 18.4,
+      "toolchain": "0.16.0",
+      "detail": "no converter written; asked for by asheeas/languages/asheeas-zig",
+      "note": "Named as a target, no converter written. Unexercised."
+    },
+    {
+      "id": "python",
+      "kind": "named-no-emitter",
+      "language": "Python",
+      "emitter": null,
+      "status": "no-emitter",
+      "accuracy": 0,
+      "ms": 5,
+      "toolchain": "Python 3.14.7",
+      "detail": "no converter written; asked for by asheeas/languages/asheeas-python, algorithm REQ-040",
+      "note": "Named as a target, no converter written. Unexercised."
+    }
+  ],
+  "native": {
+    "name": "scoreboard",
+    "source": "harness/native/scoreboard.cpp",
+    "compiler": "g++ -std=c++20 -O2",
+    "note": "C++ because C++ is the one native rendition of the transpiler's five targets recorded as having run on this host. There is no C emitter, so this is not a C rendition of the algorithm.",
+    "status": "ran",
+    "equivalence": {
+      "vectors": 6,
+      "agreed": 6,
+      "comparisons": [
+        {
+          "input": "",
+          "native": "e3b0c44298fc1c14",
+          "typescript": "e3b0c44298fc1c14",
+          "agree": true
+        },
+        {
+          "input": "abc",
+          "native": "ba7816bf8f01cfea",
+          "typescript": "ba7816bf8f01cfea",
+          "agree": true
+        },
+        {
+          "input": "the algorithm",
+          "native": "0907994f66a3e4a2",
+          "typescript": "0907994f66a3e4a2",
+          "agree": true
+        },
+        {
+          "input": "xxxxxxxxxxxxxxxxxxxxx...(4096)",
+          "native": "a2e659dacb4691e8",
+          "typescript": "a2e659dacb4691e8",
+          "agree": true
+        },
+        {
+          "input": "héllo",
+          "native": "3c48591d8d098a45",
+          "typescript": "3c48591d8d098a45",
+          "agree": true
+        },
+        {
+          "input": "AI TDD",
+          "native": "58c2d9ac24a067f9",
+          "typescript": "58c2d9ac24a067f9",
+          "agree": true
+        }
+      ]
+    },
+    "speed": {
+      "iterations": 20000,
+      "sizeBytes": 4096,
+      "nativeUsPerDigest": 18.137,
+      "typescriptUsPerDigest": 4.261,
+      "factor": 0.23
+    },
+    "detail": "6/6 digests identical to the TypeScript rendition"
+  },
+  "scoreboard": "rendition             kind                accuracy  ms\n--------------------------------------------------------------\nts-five-commits-ago   algorithm           1.0000    18060.1\nts-main               algorithm           1.0000    7721.6\ngo                    transpiler-target   1.0000    197.0\njava                  transpiler-target   1.0000    724.0\ncpp                   transpiler-target   1.0000    483.0\nkotlin                transpiler-target   1.0000    5943.0\nswift                 transpiler-target   1.0000    497.0\nrust                  named-no-emitter    0.0000    18.0\nc                     named-no-emitter    0.0000    3.7\nzig                   named-no-emitter    0.0000    18.4\npython                named-no-emitter    0.0000    5.0\n\nrenditions            11\nmean accuracy         0.6364\ntotal ms              33670.8\nfastest that ran      go (197.0 ms)\nslowest that ran      ts-five-commits-ago (18060.1 ms)\nreport digest         810f4bde5abae356\nscoreboard ms         0.112\n"
+}

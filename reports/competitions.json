@@ -1,0 +1,144 @@
+{
+  "measuredOn": "2026-09-18T04:02:25+00:00",
+  "account": "the holder of ~/.kaggle/access_token",
+  "method": "Kaggle API v1, read-only. No rules accepted, no competition entered, nothing submitted.",
+  "competitions": [
+    {
+      "slug": "arc-prize-2026-arc-agi-2",
+      "found": true,
+      "id": 133469,
+      "title": "ARC Prize 2026 - ARC-AGI-2",
+      "organisation": "Abstraction and Reasoning Corpus",
+      "category": "Featured",
+      "reward": "700,000 Usd",
+      "metric": "Abstraction and Reasoning Challenge",
+      "maxTeamSize": 5,
+      "license": "Apache 2.0",
+      "deadline": "2026-11-02T23:59:00Z",
+      "teamCount": 2071,
+      "userHasEntered": false,
+      "userRank": 0,
+      "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2",
+      "rules": {
+        "code": 403,
+        "verdict": "not-accepted",
+        "meaning": "the account holder has not accepted this competition's rules",
+        "action": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/rules"
+      }
+    },
+    {
+      "slug": "arc-prize-2026-arc-agi-3",
+      "found": true,
+      "id": 133468,
+      "title": "ARC Prize 2026 - ARC-AGI-3",
+      "organisation": "Abstraction and Reasoning Corpus",
+      "category": "Featured",
+      "reward": "850,000 Usd",
+      "metric": "ARC-AGI-3 Metric",
+      "maxTeamSize": 8,
+      "license": "Apache 2.0",
+      "deadline": "2026-11-02T23:59:00Z",
+      "teamCount": 3127,
+      "userHasEntered": true,
+      "userRank": 2702,
+      "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-3",
+      "rules": {
+        "code": 200,
+        "verdict": "accepted",
+        "meaning": "this account may download; the body was not read"
+      }
+    },
+    {
+      "slug": "arc-prize-2026-paper-track",
+      "found": true,
+      "id": 133724,
+      "title": "ARC Prize 2026 - Paper Track",
+      "organisation": "Abstraction and Reasoning Corpus",
+      "category": "Featured",
+      "reward": "450,000 Usd",
+      "metric": "",
+      "maxTeamSize": 8,
+      "license": "Subject to Competition Rules",
+      "deadline": "2026-11-09T23:59:00Z",
+      "teamCount": 192,
+      "userHasEntered": false,
+      "userRank": 0,
+      "url": "https://www.kaggle.com/competitions/arc-prize-2026-paper-track",
+      "rules": {
+        "code": 403,
+        "verdict": "not-accepted",
+        "meaning": "the account holder has not accepted this competition's rules",
+        "action": "https://www.kaggle.com/competitions/arc-prize-2026-paper-track/rules"
+      }
+    },
+    {
+      "slug": "biohub-cell-tracking-during-development",
+      "found": true,
+      "id": 136605,
+      "title": "Biohub - Cell Tracking During Development",
+      "organisation": "Biohub",
+      "category": "Research",
+      "reward": "60,000 Usd",
+      "metric": "CZI Biohub Zebrafish 133605",
+      "maxTeamSize": 5,
+      "license": "CC0: Public Domain",
+      "deadline": "2026-09-29T23:59:00Z",
+      "teamCount": 3665,
+      "userHasEntered": false,
+      "userRank": 0,
+      "url": "https://www.kaggle.com/competitions/biohub-cell-tracking-during-development",
+      "rules": {
+        "code": 403,
+        "verdict": "not-accepted",
+        "meaning": "the account holder has not accepted this competition's rules",
+        "action": "https://www.kaggle.com/competitions/biohub-cell-tracking-during-development/rules"
+      }
+    },
+    {
+      "slug": "enveda-CASMI26-molecule-id-mass-spectra",
+      "found": true,
+      "id": 143318,
+      "title": "Enveda CASMI 2026 - Molecule ID From Mass Spectra",
+      "organisation": "Enveda",
+      "category": "Featured",
+      "reward": "50,000 Usd",
+      "metric": "CASMI: Mean Average Precision",
+      "maxTeamSize": 5,
+      "license": "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)",
+      "deadline": "2026-12-14T23:59:00Z",
+      "teamCount": 592,
+      "userHasEntered": false,
+      "userRank": 0,
+      "url": "https://www.kaggle.com/competitions/enveda-CASMI26-molecule-id-mass-spectra",
+      "rules": {
+        "code": 403,
+        "verdict": "not-accepted",
+        "meaning": "the account holder has not accepted this competition's rules",
+        "action": "https://www.kaggle.com/competitions/enveda-CASMI26-molecule-id-mass-spectra/rules"
+      }
+    },
+    {
+      "slug": "kaggriculture",
+      "found": true,
+      "id": 147734,
+      "title": "Kaggriculture",
+      "organisation": "Kaggle",
+      "category": "Featured",
+      "reward": "50,000 Usd",
+      "metric": "kaggriculture",
+      "maxTeamSize": 5,
+      "license": "Apache 2.0",
+      "deadline": "2026-09-30T23:59:00Z",
+      "teamCount": 9383,
+      "userHasEntered": false,
+      "userRank": 0,
+      "url": "https://www.kaggle.com/competitions/kaggriculture",
+      "rules": {
+        "code": 403,
+        "verdict": "not-accepted",
+        "meaning": "the account holder has not accepted this competition's rules",
+        "action": "https://www.kaggle.com/competitions/kaggriculture/rules"
+      }
+    }
+  ]
+}

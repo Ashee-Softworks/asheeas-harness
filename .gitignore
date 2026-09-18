@@ -1,0 +1,30 @@
+# Build scratch: the native binary, and the programs the transpiler converted while the
+# measurements were taken. Rebuild either with `sh run.sh`.
+out/
+
+# `reports/` is deliberately NOT ignored.
+#
+# It is the evidence for every claim in README.md — the per-rendition accuracy and speed, the
+# digest table, the competition rules state. This project's rule is that a claim about a
+# revision sits next to the command that proved it, and an evidence file that is regenerated
+# but never committed is a claim with the proof held locally and nowhere else.
+#
+# A report that has been *superseded* is replaced, not deleted, and the replacement is a
+# commit, so the history of what was measured stays legible.
+
+# Nothing here should ever hold a credential. If this pattern ever matches something, the
+# thing to change is the thing that wrote it, not this pattern.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+access_token
+kaggle.json
+hosts.yml
+
+# Scratch.
+*.log
+.DS_Store
+.bench-scratch/
