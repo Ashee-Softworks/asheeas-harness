@@ -109,10 +109,66 @@ else
 fi
 echo
 
+# ---------------------------------------------------------------- 6. claimed links resolve
+echo "6. every link claimed in a published document resolves"
+#
+# Added after three claims failed in one session and a person caught every one of them.
+#
+#   "no Ashee Softworks account exists in any repository"   -> four URLs returned HTTP 200
+#   "GitHub is the only verified link"                      -> two GitHub orgs existed, not one
+#   a social-account search that found only npm authors     -> never resolved the obvious URLs
+#
+# Every one was caught by a human reading, and none by a check. The mistakes file already
+# names the difference: "we got lucky" and "the gate caught it" are different facts about
+# the process. This is the gate for that class.
+#
+# It is the only check here that needs the network, so it degrades rather than fails: a
+# link that cannot be reached offline is reported as unverified, not as broken.
+claimed=$(grep -rhoE 'https?://[A-Za-z0-9._~:/?#@!$&*+,;=%-]+' \
+            "$ROOT/announcement" "$ROOT/observations" 2>/dev/null \
+          | sed 's/[.,)*]*$//' | sort -u)
+
+if [ -z "$claimed" ]; then
+  echo "  no published documents claim a link; skipped"
+else
+  if ! curl -sS -o /dev/null --max-time 8 https://github.com 2>/dev/null; then
+    echo "  offline: $(echo "$claimed" | wc -l) claimed link(s) could not be checked"
+  else
+    bad=""
+    total=0
+    for url in $claimed; do
+      # A loopback address is a fact about a machine, not a published link.
+      case "$url" in
+        *127.0.0.1*|*localhost*) continue ;;
+      esac
+      total=$((total + 1))
+      code=$(curl -sS -o /dev/null -w '%{http_code}' -L --max-time 20 "$url" 2>/dev/null || echo 000)
+      case "$code" in
+        2*|3*) ;;
+        *) bad="$bad $url (HTTP $code);" ;;
+      esac
+    done
+    # `report` is called here in the parent shell, not inside a pipe. The first version piped
+    # into `while read`, which runs in a subshell, so `found=1` never escaped and the audit
+    # printed the failure and then exited 0. A check that reports but does not enforce is the
+    # defect this check exists to catch.
+    if [ -n "$bad" ]; then
+      report "unresolved claimed link(s):$bad"
+    else
+      echo "  all $total claimed link(s) resolve"
+    fi
+  fi
+fi
+echo
+
 if [ "$found" = 0 ]; then
   echo "clean: nothing to remove, nothing to rotate."
   exit 0
 fi
+
+echo "NOT CLEAN: fix the entries above before pushing anywhere."
+echo "A secret in history is not fixed by a later commit; the credential must be rotated."
+exit 1
 
 echo "NOT CLEAN: fix the entries above before pushing anywhere."
 echo "A secret in history is not fixed by a later commit; the credential must be rotated."
