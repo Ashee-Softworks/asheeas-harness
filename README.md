@@ -10,6 +10,37 @@ node bench.mjs --only cpp
 python3 recon.py       # reconnaissance on its own
 ```
 
+## Licence
+
+**GNU Affero General Public License, version 3 or later** (`AGPL-3.0-or-later`).
+Copyright (C) 2026 Ashee Softworks. The full text is in [`LICENSE`](LICENSE).
+
+Read it, run it, change it, sell it. The one condition is the condition that makes this AGPL
+rather than GPL: **if you run a modified version and let other people use it over a network, you
+must offer those users your source.** Section 13 says it in full. Running it privately, or
+changing it and keeping the changes to yourself, obliges you to nothing.
+
+**Two facts about the change, both worth knowing.** Until 2026-09-24 this repository carried
+`PROPRIETARY AND CONFIDENTIAL — ALL RIGHTS RESERVED / NO LICENSE IS GRANTED`, and **that text
+remains in every commit before the change** — a later commit does not unpublish it, in exactly the
+way a rotated secret is not made safe by deleting the file. And the new grant cannot be recalled
+either: every copy taken under AGPL-3.0 stays free, for anyone, for good. A repository's history
+is the one thing on this page that is permanent in both directions.
+
+## What else is in this repository
+
+The harness is about a third of it. The rest is here on purpose, and it is record rather than
+product.
+
+| path | what it is |
+|---|---|
+| `run.sh`, `bench.mjs`, `bin/`, `native/`, `versions.json`, `reports/` | the harness: eleven renditions measured, and the committed evidence for every number in this file |
+| `ashee-os/` | the OS image builder — the design system projected onto a framebuffer (rgb565, an 8×16 glyph cell) by `tools/build.mjs`, emitted as a single C header |
+| `observations/` | audits written while the work was happening: four claims reported without tracing their provenance, an injection surface, a refusal, a token-accounting defect. **This is the method, not the results** — it is the part meant to be useful to someone who never speaks to anyone here |
+| `announcement/` | **an unpublished draft.** Every claim in it that was not true when it was written is listed in its own "not yet true" table, and it is kept rather than removed |
+| `members/` | the member roster: usernames and invite status, no credentials, and the note explaining why there are none |
+| `leak-audit.sh`, `system-audit.sh`, `os-probe.sh` | the gates. `leak-audit.sh` runs before anything is pushed anywhere, and exits non-zero if it finds a credential |
+
 ## What it answers
 
 | Question | Where the answer is |
@@ -113,4 +144,17 @@ It answers five questions and exits non-zero if any of them has an answer:
 
 `reports/` is committed on purpose — it is the evidence for every number in this file, and an
 evidence file that is regenerated but never committed is a claim whose proof is held locally
-and nowhere else. Every path in it is relative, which is why question 5 passes.
+and nowhere else. Every path in **`reports/`** is relative, so it passes question 5.
+
+**Question 5 does not pass for the repository as a whole, and this sentence used to imply it
+did.** Checked on 2026-09-24: five files under `ashee-os/` carry absolute paths containing this
+machine's account name — `gui/tokens.h` in two comments, `ashee.config.mjs` in two defaults, and
+`mkpendrive.sh` in an archive path. This file's own wording applies: *"A report that names the
+person who ran it is a quieter leak than a token and still a leak."*
+
+They are also a **portability defect, which now matters more than the privacy one**: a build that
+reads `/home/…` cannot run on anybody else's machine, and this repository is open. The fix in each
+case is small and one of three things — `${HOME}`, a path relative to the repository, or the
+environment variable the code already reads (`ashee.config.mjs` takes `ASHEE_UI` that way, and only
+the default is absolute).
+

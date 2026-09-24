@@ -27,7 +27,10 @@ set -uo pipefail
 OUT="${1:-/tmp/ashee-pendrive}"
 SRC="$(cd "$(dirname "$0")" && pwd)"
 KERNEL="/boot/vmlinuz-$(uname -r)"
-ARCHIVE=/home/asheegaming/ashee-archive
+# `${HOME}` rather than a literal path: this file is published, and an absolute path names the
+# account it was written under. It resolves to the same directory either way on the machine it was
+# written on, and is overridable for anywhere else. See `leak-audit.sh` question 5.
+ARCHIVE="${ASHEE_ARCHIVE:-${HOME}/ashee-archive}"
 [ -f "$KERNEL" ] || { echo "no bootable kernel at $KERNEL" >&2; exit 1; }
 [ -d "$ARCHIVE" ] || { echo "no archive at $ARCHIVE -- run the archive build first" >&2; exit 1; }
 
@@ -47,7 +50,7 @@ R="$OUT/root"
 #
 # **A shell that starts is not a system that works.** Every one of those gaps was invisible until
 # something called the command, and an unbundled applet looks exactly like a working one until then.
-TOOLS="sh ls cat mount umount uname df dmesg grep sed head tail awk cut printf sleep wc tr sort clear ps free nproc find du tar gzip mkdir rmdir rm cp mv ln date id whoami echo true false poweroff reboot halt"
+TOOLS="sh ls cat mount umount uname df dmesg grep sed head tail awk cut printf sleep wc tr sort clear ps free nproc find du tar gzip mkdir rmdir rm cp mv ln date id whoami echo true false test stat basename dirname realpath sha256sum md5sum tee xargs which poweroff reboot halt"
 EXTRA="git tar gzip"
 
 libs=""

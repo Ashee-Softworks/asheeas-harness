@@ -33,9 +33,20 @@ SKIP='--exclude-dir=node_modules --exclude-dir=.git --exclude-dir=.venv --exclud
 
 found=0
 
+# `report` is called from inside `| while read` in five of the six checks below, and a pipeline runs
+# in a **subshell**: `found=1` set there never reaches this shell, so those checks print a finding
+# and the audit still exits 0. That is the exact defect this file documents at question 6 — found
+# there, and fixed only there. It was still live for questions 1–5 until 2026-09-24, and it made
+# `exit=0` mean "question 6 was happy", not "nothing was found".
+#
+# A subshell cannot set a parent variable, but it can append to a file. The exit code is decided
+# from the file at the end, so every check enforces rather than merely reports.
+FOUND=$(mktemp)
+trap 'rm -f "$FOUND"' EXIT INT TERM
+
 report() {
-  found=1
-  echo "  $1"
+  printf '  %s\n' "$1"
+  printf 'found\n' >>"$FOUND"
 }
 
 echo "Leak audit"
@@ -101,12 +112,31 @@ echo
 
 # ---------------------------------------------------------------- 5. this machine's paths
 echo "5. this machine's account name in files that would be published"
-hits=$(grep -rIn "$WHOAMI_PATTERN" "$ROOT" $SKIP 2>/dev/null | grep -v "$HERE/leak-audit.sh" | grep -vE '\.log:' | head -20)
-if [ -n "$hits" ]; then
-  echo "$hits" | while read -r line; do report "machine path: $line"; done
-else
-  echo "  none"
-fi
+
+# **The question is only answerable on a machine that belongs to a person.** On a CI runner the
+# account is `runner`, and inside a container it is often `root`. Both are ordinary words that
+# appear in ordinary prose — a commit subject about gitlinks, a file named `command-runner.ts` — so
+# asking the question there does not find a machine path, it finds the word. Measured 2026-09-24: run
+# with the account set to `runner`, this check reported six findings against this repository and
+# every one of them was English.
+#
+# So it refuses, in the register the rest of this project already uses: "we could not check" and
+# "there is nothing there" are different statements, and the second is what a green tick would imply.
+case "$WHOAMI_PATTERN" in
+  runner|root|docker|circleci|vsts*|buildkite-agent)
+    echo "  unanswerable on this machine: the account is '$WHOAMI_PATTERN', which is not a person."
+    echo "  This question is about whoever holds the work, so it means something only where the"
+    echo "  work is. Reported as unchecked, not as clean."
+    ;;
+  *)
+    hits=$(grep -rIn "$WHOAMI_PATTERN" "$ROOT" $SKIP 2>/dev/null | grep -v "$HERE/leak-audit.sh" | grep -vE '\.log:' | head -20)
+    if [ -n "$hits" ]; then
+      echo "$hits" | while read -r line; do report "machine path: $line"; done
+    else
+      echo "  none"
+    fi
+    ;;
+esac
 echo
 
 # ---------------------------------------------------------------- 6. claimed links resolve
@@ -161,14 +191,10 @@ else
 fi
 echo
 
-if [ "$found" = 0 ]; then
+if [ ! -s "$FOUND" ]; then
   echo "clean: nothing to remove, nothing to rotate."
   exit 0
 fi
-
-echo "NOT CLEAN: fix the entries above before pushing anywhere."
-echo "A secret in history is not fixed by a later commit; the credential must be rotated."
-exit 1
 
 echo "NOT CLEAN: fix the entries above before pushing anywhere."
 echo "A secret in history is not fixed by a later commit; the credential must be rotated."

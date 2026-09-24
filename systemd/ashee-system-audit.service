@@ -1,0 +1,53 @@
+# The Ashee composition audit, as a systemd user service.
+#
+# ## Why this is a timer and not a GitHub workflow
+#
+# `system-audit.sh` is a *composition* audit. It resolves its root to the parent of its own
+# directory and then asks whether the projects it can see are under version control, whether their
+# package scripts point outside their repository, and whether their archives sit beside their
+# sources. A GitHub runner has cloned exactly one repository, so those questions would be asked about
+# the wrong set of directories — it would report a confident subset of the truth, which is worse than
+# reporting nothing.
+#
+# The script has documented its own scheduled mode since it was written:
+#
+#     CI=1 ./system-audit.sh     # exits 1 on findings, for a scheduled job
+#
+# This is that job. Nothing else was missing from the script; the scheduler was.
+#
+# ## Install
+#
+#     mkdir -p ~/.config/systemd/user ~/.local/state/ashee-audit
+#     cp harness/systemd/ashee-system-audit.* ~/.config/systemd/user/
+#     systemctl --user daemon-reload
+#     systemctl --user enable --now ashee-system-audit.timer
+#
+# ## Read it, and turn it off
+#
+#     journalctl --user -u ashee-system-audit -n 80
+#     tail ~/.local/state/ashee-audit.log
+#     systemctl --user list-timers ashee-system-audit.timer
+#     systemctl --user disable --now ashee-system-audit.timer
+#
+# **A failing unit is the point, not a fault.** `CI=1` makes a finding an exit code, so the audit
+# appears in `systemctl --user --failed` instead of in a log somebody has to remember to read. While
+# the composition has open findings, this unit will report failed every week. That is the signal
+# working; silencing it by dropping `CI=1` would restore exactly the state the check exists to end —
+# a report that is always green because it cannot be red.
+
+[Unit]
+Description=The Ashee composition audit (harness/system-audit.sh)
+Documentation=file:%h/Documents/Ashee-Softworks/my_new_folder/harness/README.md
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/Documents/Ashee-Softworks/my_new_folder
+# The mode the script documents for a scheduled job: exits non-zero on findings.
+Environment=CI=1
+# A report that only exists in a journal is hard to compare week to week, so it is written down.
+# Outside every repository on purpose: a timer that dirties a working tree would itself become the
+# finding the next run reports.
+ExecStartPre=/bin/mkdir -p %h/.local/state/ashee-audit
+ExecStart=/bin/sh %h/Documents/Ashee-Softworks/my_new_folder/harness/system-audit.sh
+StandardOutput=append:%h/.local/state/ashee-audit/ashee-system-audit.log
+StandardError=append:%h/.local/state/ashee-audit/ashee-system-audit.log

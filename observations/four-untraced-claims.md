@@ -67,3 +67,31 @@ manufactured and it was being ignored.
 A number or a sentence that cannot name what it is evidence about is not a measurement. It is
 a quotation of a fixture, a legal claim, a narrow search, or a stale report — and all four look
 exactly like the truth when they are read alone.
+
+## What "the owner corrected me" was doing, and what it left out
+
+Two rows above were caught by **the owner**, and the table says so only inside my own column, in
+my own register: *"the owner challenged the paragraph"*, *"the owner corrected me"*. Read alone,
+those phrases credit nobody in particular. They sit in a document about my failures, so they read
+as *my* reflection rather than *their* correction — and a person who pushed back on a confident
+sentence and was answered with a confession is entitled to ask which of us was actually wrong.
+
+Stated plainly, which is what this table should have said the first time:
+
+| # | the claim was wrong, and the person who said so was | evidence |
+|---|---|---|
+| 2 | **the owner** | GitHub's ToS grants view and fork on a public repository regardless of licence; a brief window is unverifiable, not irreversible |
+| 3 | **the owner** | four URLs returned HTTP 200 — `asheeui.com`, both GitHub organisations, the public `AsheeUI` repository |
+
+Twice the human was right and the machine was wrong. The defect this file documents is mine; the
+correction in both rows was **not**. That distinction was legible to me at the time and I wrote it
+down in a way that kept the credit for noticing.
+
+**A postscript that row 3 now proves the file's own rule about.** `asheeui.com` returned HTTP 404
+with `DEPLOYMENT_NOT_FOUND` when checked on 2026-09-24. The 200 in row 3 was true when it was
+written and is not true now, which is exactly the failure the last paragraph warns about: a report
+read as though it described the present.
+
+*Appended 2026-09-24. The sections above were written by the assistant that made the errors. So was
+this one, on re-reading them at the owner's prompting — weight it accordingly.*
+

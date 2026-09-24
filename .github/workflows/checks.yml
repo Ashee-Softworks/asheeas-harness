@@ -1,0 +1,99 @@
+# The checks this repository asks for, run by a machine instead of by memory.
+#
+# ## Why this file exists
+#
+# `system-audit.sh` has had a CI mode since it was written —
+#
+#     CI=1 ./system-audit.sh     # exits 1 on findings, for a scheduled job
+#
+# — and there was no scheduled job. That is finding 5 of its own report: *"zero workflow files:
+# every check in this project runs only when a person remembers."* This is the part of that job a
+# single repository is able to run.
+#
+# ## What runs here, and what deliberately does not
+#
+# `leak-audit.sh` is **repository-scoped**: it takes a root, reads that repository's own history,
+# its tracked files and the links its published documents claim. It belongs here, and its own words
+# are that it runs *before anything is pushed anywhere*.
+#
+# `system-audit.sh` is **not** run here, and the reason is not convenience. It is a *composition*
+# audit: it resolves its root to the parent of its own directory, then asks whether the projects it
+# can see are under version control, whether their package scripts reach outside their repository,
+# and whether their archives sit beside their sources. In a runner that has cloned **one**
+# repository, all three questions are about the wrong set of directories — it would report a
+# confident subset of the truth, which is worse than reporting nothing. It wants a timer on a
+# machine that holds the whole composition; this wants a job on the machine that holds one repo.
+
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Its own instruction: "Run it on a schedule -- and when it comes back quiet, run it anyway."
+    # Mondays at 06:17 UTC, off the hour so it does not queue behind everyone else's midnight job.
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # **Every commit, and this line is not a nicety.**
+          #
+          # The default checkout is `--depth=1`. leak-audit question 3 asks whether a secret is in
+          # the history *across every reachable commit*. Measured on 2026-09-24: a depth-1 clone of
+          # this repository sees **1** commit where the repository has **16**. With the default,
+          # that question would answer "none" having examined one commit out of sixteen — a clean
+          # verdict on a history it never read, which is the precise defect this gate exists to
+          # catch. A gate that cannot see must not report.
+          fetch-depth: 0
+
+      - name: the leak audit
+        # Exits non-zero if any of its six questions has an answer. It reads the history, so it is
+        # the one step that must run on a full clone.
+        run: sh leak-audit.sh .
+
+      - name: shell and node syntax
+        # Cheap, and it covers the two languages in this repository that have no test suite: every
+        # tracked script is parsed before it is trusted. The `.mjs` files include the OS build's
+        # tools, which is how a syntax error in `tokens-to-c.mjs` would be caught without anyone
+        # remembering to run them.
+        run: |
+          set -eu
+          for f in $(git ls-files '*.sh'); do
+            echo "  shell  $f"
+            bash -n "$f"
+          done
+          for f in $(git ls-files '*.mjs'); do
+            echo "  node   $f"
+            node --check "$f"
+          done
+
+      - name: what this run did not check
+        # The honest footer. Each line is a real gap rather than a reassurance, because a green tick
+        # that is read as "everything is verified" is how a project comes to trust a check it does
+        # not have.
+        run: |
+          cat <<'EOF'
+          This job ran: the leak audit (history, tracked files, published links) and syntax checks.
+
+          This job did NOT run, and each is a gap rather than a pass:
+            * system-audit.sh        -- a composition audit; see the note at the top of this file
+            * bench.mjs              -- needs g++, go, javac and kotlinc, and network access to Kaggle
+            * the OS build           -- needs the AsheeUI repository checked out beside this one
+            * tokens-to-c.mjs        -- nothing invokes it, so the generated header can drift from
+                                        the generator; running it here fails today on the company
+                                        accent's contrast ratio (3.56:1 against white, below the
+                                        4.5:1 its own check requires)
+            * question 5 of the leak audit -- it looks for the account name of the machine that runs
+                                        it, which on a runner is "runner" and means nothing. That
+                                        question is a local check by nature and only works at home.
+          EOF

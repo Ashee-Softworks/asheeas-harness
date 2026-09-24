@@ -107,6 +107,7 @@ head2 "6. Configuration the code requires, and whether it is written down"
 declared="$(grep -rhoE 'process\.env\.[A-Z0-9_]+' --include='*.ts' --include='*.tsx' --include='*.mjs' --include='*.js' \
   --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=.venv --exclude-dir=.git \
   --exclude-dir=dist --exclude-dir=build --exclude-dir=vendor \
+  --exclude-dir=.vercel --exclude-dir=.turbo \
   . 2>/dev/null | sed 's/process\.env\.//' | sort -u)"
 if [ -z "$declared" ]; then
   ok "no environment variables read from source"
@@ -145,8 +146,22 @@ count="$(find . -maxdepth 4 \( -name '__pycache__' -o -name '.pytest_cache' -o -
 ok "$count cache/venv directories present; checking each is ignored by the repo it sits in"
 while IFS= read -r d; do
   repo="$(git -C "$d" rev-parse --show-toplevel 2>/dev/null)"
-  if [ -n "$repo" ] && ! git -C "$repo" check-ignore -q "$d" 2>/dev/null; then
-    finding "$d is NOT ignored by $repo"
+  if [ -n "$repo" ]; then
+    # **The path has to be asked about in the repository's own terms.** `$d` is written relative to
+    # this script's working directory, and `git -C "$repo"` resolves a relative path against a
+    # *different* root — so the first version of this check asked about
+    # `arc-agi-3-staging/arc-agi-3-staging/__pycache__`, matched nothing, and reported seven
+    # directories as unignored that git's own answer says are ignored. A gate that names problems
+    # that are not there is the same defect as one that stays silent about problems that are:
+    # the person reading it cannot tell which findings to act on.
+    #
+    # Checked 2026-09-24 against `git check-ignore -v` for all seven paths: every one matched a
+    # pattern in its own `.gitignore`.
+    absolute="$(cd "$d" 2>/dev/null && pwd)"
+    relative="${absolute#"$repo"/}"
+    if ! git -C "$repo" check-ignore -q "$relative" 2>/dev/null; then
+      finding "$d is NOT ignored by $repo"
+    fi
   fi
 done < <(find . -maxdepth 4 \( -name '.venv' -o -name '.next' -o -name '__pycache__' \) -not -path '*/node_modules/*' 2>/dev/null)
 

@@ -1,0 +1,28 @@
+# The schedule for the composition audit. See ashee-system-audit.service for why this is a timer on
+# a machine rather than a job on GitHub, and for the install, read and off-switch commands.
+#
+# ## Why weekly, and why not more often
+#
+# The findings this audit produces — a duplicate tree with no history, a dead worktree, an archive
+# beside its source, a check that nothing schedules — are the kind that were quiet for a hundred
+# commits. They change when a person changes them, not between pushes. A daily run would produce the
+# same answer twenty-nine days out of thirty, and a report that is always the same is a report that
+# stops being read.
+#
+# `Persistent=true` so a machine that was off on Monday still runs it once when it comes back,
+# rather than skipping the week silently.
+
+[Unit]
+Description=Run the Ashee composition audit weekly
+
+[Timer]
+OnCalendar=Mon 06:47
+# Off the hour, and off the same minute as the three repository workflows, so a weekly report is not
+# competing with anything else for the machine.
+#
+# `OnCalendar=Mon 06:47` reads as "Monday at 06:47 local".
+Persistent=true
+RandomizedDelaySec=0
+
+[Install]
+WantedBy=timers.target

@@ -15,12 +15,23 @@
 export default {
   name: "ashee-os",
 
-  /** Where AsheeUI lives on this machine. Overridable with ASHEE_UI=/path. */
+  /**
+   * Where AsheeUI lives on this machine. Overridable with ASHEE_UI=/path.
+   *
+   * The default is assembled from `$HOME` rather than written as an absolute path. It resolves to
+   * the same directory before and after; what changed is that this published file no longer carries
+   * the account name of the machine it was written on. That matters twice: `leak-audit.sh`
+   * question 5 exists for exactly this, and a stranger who clones the repository cannot use a path
+   * that names somebody else's home directory.
+   */
   designRoot:
-    process.env.ASHEE_UI ?? "/home/asheegaming/Documents/Ashee-Softworks/AsheeUI/ashee-ui/packages/shared/src",
+    process.env.ASHEE_UI ??
+    `${process.env.HOME}/Documents/Ashee-Softworks/AsheeUI/ashee-ui/packages/shared/src`,
 
-  /** The palette's declared source of truth, per BRAND.md. */
-  brand: "/home/asheegaming/Documents/Ashee-Softworks/my_new_folder/brand/BRAND.md",
+  /** The palette's declared source of truth, per BRAND.md. Overridable with ASHEE_BRAND=/path. */
+  brand:
+    process.env.ASHEE_BRAND ??
+    `${process.env.HOME}/Documents/Ashee-Softworks/my_new_folder/brand/BRAND.md`,
 
   /**
    * The platform-neutral layer, in dependency order. Each is transformed by the plugin whose

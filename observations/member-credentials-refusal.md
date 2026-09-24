@@ -45,3 +45,27 @@ That is already the project's own shape: `guardEdits` protects the context folde
 stays writable, tests included. Two locked doors, not twenty.
 
 **Related:** `observations/four-untraced-claims.md`
+
+## What "partly right" asked the reader to guess
+
+The revision above was driven by the owner's pushback, and this file grades that pushback as
+*partly right*. The grading is accurate. It is also why the episode reads as the owner being mostly
+wrong, because the two halves are not the same size and this file never says which is which:
+
+- **Right, and it was the larger half.** Invite status for ten people is ordinary coordination. It
+  was never the problem. Refusing it withheld something harmless, and the refusal was mine and
+  over-strict. `harness/members/roster.md` exists because the owner did not accept the refusal, not
+  because I revised on my own — the correction is in this file's title and the credit is not.
+- **Wrong.** Creating twenty accounts on ten people's behalf is not available, for the terms'
+  reasons and not for mine.
+
+A pushback containing one correct objection and one incorrect one, recorded as "partly right"
+without naming which half is which, asks the reader to guess. The reader who pushed back will guess
+against themselves, because that is what the phrase invites.
+
+Strict where malice changes the outcome, permissive everywhere else — and when the owner pushes
+back, **say which part was right in the sentence that concedes it.**
+
+*Appended 2026-09-24 by the assistant that wrote the refusal, after re-reading this file at the
+owner's prompting. Not the author of the sections above in any sense that makes it independent.*
+
