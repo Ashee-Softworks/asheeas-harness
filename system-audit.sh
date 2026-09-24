@@ -125,8 +125,20 @@ head2 "7. Values that decide something public, and whether any test covers them"
 
 cdt="asheeas/workspaces/asheesms/repo/apps/platform"
 if [ -f "$cdt/test/countdown.test.ts" ]; then
-  if grep -q 'delete process.env.LAUNCH_DATE' "$cdt/test/countdown.test.ts"; then
-    finding "the countdown test DELETES LAUNCH_DATE, so nothing validates the configured launch date. A malformed one (2026-09-2O) parses to NaN, silently falls back to the default, and the public page counts to the wrong day with no test failing."
+  # **Ask about the property, not about a string in the file.** This check used to fire whenever the
+  # test contained `delete process.env.LAUNCH_DATE` — and that line is correct where it appears: in
+  # the suite's own `beforeEach`, because a configured date must not decide the tests that pin the
+  # default. So the check kept reporting a defect whose evidence was the fix rather than the fault,
+  # and it kept reporting it after the defect itself was repaired on 2026-09-24.
+  #
+  # The question it means is whether a *configured* `LAUNCH_DATE` is validated. Both halves below are
+  # still heuristics, but they are heuristics about that question: the suite has to set the variable,
+  # and it has to assert that something is refused.
+  if grep -q 'process\.env\.LAUNCH_DATE =' "$cdt/test/countdown.test.ts" \
+     && grep -qE 'toThrow|rejects' "$cdt/test/countdown.test.ts"; then
+    ok "the countdown suite sets LAUNCH_DATE and asserts on the result, including a refusal"
+  else
+    finding "nothing in the countdown suite both sets LAUNCH_DATE and asserts on what comes back, so a malformed one (2026-09-2O) has nothing checking it. Until 2026-09-24 it parsed to NaN, silently fell back to the default, and the public page counted to the wrong day with every test passing -- because the test asserted that fallback was correct."
   fi
 fi
 
