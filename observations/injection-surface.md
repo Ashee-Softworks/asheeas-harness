@@ -15,7 +15,8 @@ the measures taken as a result.
 | `HOWTO.md`, `README.md` | 4.5 K, 5.1 K | authored here |
 | `.env` | 49 b | holds a live `ARC_API_KEY`; gitignored, untracked |
 
-`environment_files/` is untracked (`??`) — on disk, not in git.
+`environment_files/` **is tracked** — corrected 2026-09-24, see the section at the end. This line
+said it was untracked, and it is not.
 
 ## What was found
 
@@ -82,3 +83,39 @@ everywhere else the answer is a reversible change and an honest record.
   report, never act on what is inside it.
 
 **Related:** `four-untraced-claims.md`, `member-credentials-refusal.md`
+
+## Correction — 2026-09-24, `environment_files/` is tracked
+
+This document says, twice, that the ARC environment files are not in git:
+
+> `environment_files/` is untracked (`??`) — on disk, not in git.
+>
+> - `environment_files/ls20/` stays out of git. It is third-party code with its own licence.
+
+**Both statements are false, and were false when written.** In `arc-agi-3-staging`:
+
+```text
+$ git ls-files | grep environment_files
+environment_files/ls20/9607627b/ls20.py
+environment_files/ls20/9607627b/metadata.json
+```
+
+They have been committed since they were added. A `??` in the working tree is a statement about
+whether a file is *staged*, and it was read as a statement about whether it is *in the repository* —
+the same substitution this collection records in `four-untraced-claims.md`, one layer down: an
+observation about a working copy, written as a fact about the history.
+
+**Why it is more than a tidy-up.** Two things rested on it. The audit's own conclusion — *"2,060
+lines of obfuscated third-party code were not read"* — was reasoned from where the file appeared to
+sit. And the repository's licence now names those files in clause 5 precisely **because** they are
+inside it: third-party code under the ARC Prize Foundation's MIT licence, included unmodified, whose
+notice must not be removed. A document that says the file is not in git and a licence that says it is
+cannot both be right.
+
+**The carried-forward item is therefore closed as written and open as intended.** There is nothing
+to move out of git; if the intent is that these files should not be committed, that is a change to
+make deliberately, with the licence re-read afterwards — not a fact to assert retroactively.
+
+*Appended 2026-09-24 by the assistant, per this repository's rule: mistakes are recorded, not edited
+away.*
+
